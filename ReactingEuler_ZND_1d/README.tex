@@ -1,0 +1,150 @@
+\documentclass[preprint,12pt]{elsarticle}
+
+\usepackage[a4paper,margin=0.5in]{geometry}
+\usepackage{bm}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\newtheorem{remark}{Remark}
+\newtheorem{example}{Example}
+\newtheorem{theorem}{Theorem}
+\usepackage{subfigure}
+
+
+\begin{document}
+In numerical study of detonation phenomenon with reactive Euler equations,
+numerical solution of 1D ZND model is often used as the initial condition.
+Below we briefly introduce the ZND model as well as the derivation of the
+solution.
+
+In ZND model, the detonation process is considered as the convection
+f the mixture together with the transformation of the mixture from
+the reactant to the product. Hence, the governing equations consist of
+the conservation laws and the balance laws. In this paper, for the
+reaction process, we assume that there are only reactant and product
+species, and that the reaction is irreversible. Then in 1D case, the
+reactive Euler equations are given by
+\begin{subequations}\label{1D RE PDE}
+  \begin{align}
+    \displaystyle\frac{\partial}{\partial t}\rho + \frac{\partial}{\partial x}(\rho u) &= 0,\label{1D RE PDE:a}\\
+    \displaystyle\frac{\partial}{\partial t}(\rho u) + \frac{\partial}{\partial x}(\rho u^2 + P) &= 0,\label{1D RE PDE:b}\\
+    \displaystyle\frac{\partial}{\partial t}(E) + \frac{\partial}{\partial
+    x}(u(E + P)) &= 0,\label{1D RE PDE:c}\\
+    \displaystyle\frac{\partial}{\partial t}(\rho Y) + \frac{\partial}{\partial x}(\rho u Y) &= \omega,\label{1D RE PDE:d}
+  \end{align}
+\end{subequations}
+
+In the following, we assume that a detonation wave is propagating with a
+constant velocity $s$ along the $x$-direction of a tube, and that the flow is
+steady with respect to a coordinate system moving with the wave. From now on, a
+variable with subscript $u$ denotes its unburnt status, while with subscript
+$b$ for its complete burnt status. For example, $\rho_u$ denotes the density of
+the unburnt gas at the downstream side of the tube ($x=+\infty$), while
+$\rho_b$ denotes the density of the completely burnt gas at the upstream side
+of the tube ($x = -\infty$). With the given unburnt state of the solutions and
+parameters, the task now is to determine the velocity $s$ and the burnt state
+of the solutions, and this can be done by ZND theory as follows.
+
+First of all, a traveling wave coordinate $\xi = x - st$ is introduced, and the
+above equations (\ref{1D RE PDE}) can be transferred to the following ordinary
+differential equations
+
+\begin{subequations}\label{1D RE ODE}
+  \begin{align}
+    \displaystyle -s\frac{d}{d\xi}(\rho) + \frac{d}{d\xi}(\rho u) &= 0,\label{1D RE ODE:a}\\
+    \displaystyle -s\frac{d}{d\xi}(\rho u) + \frac{d}{d\xi}(\rho u^2 + P) &= 0,\label{1D RE ODE:b}\\
+    \displaystyle -s\frac{d}{d\xi}(E) + \frac{d}{d\xi}(u(E + P)) &= 0,\label{1D RE ODE:c}\\
+    \displaystyle -s\frac{d}{d\xi}(\rho Y) + \frac{d}{d\xi}(\rho u Y) &= \omega.\label{1D RE ODE:d}
+  \end{align}
+\end{subequations}
+
+By introducing the specific volume $V = 1/\rho$, it can be derived
+from (\ref{1D RE ODE:a}) and (\ref{1D RE ODE:b}) the so-called
+Rayleigh line
+\begin{equation}\label{Rayleigh Line}
+  P(V) = -m^2(V - V_u) + P_u,
+\end{equation}
+where $m = \rho_u(s - u_u)$ is the mass flux. Then the Hugoniot curve
+can be derived from (\ref{1D RE ODE}), by using the the equation of
+state, and the quantity enthalpy $h = E - \rho u^2/2 + PV$, as
+follows
+\begin{equation}
+  P(V, Y) = \left (2Q(1 - Y) - P_uV + \displaystyle\frac{\gamma + 1}{\gamma - 1}P_uV_u\right ) \Big/ \left (\displaystyle\frac{\gamma + 1}{\gamma - 1}V-V_u\right ).
+\end{equation}
+
+Fig. \ref{Hugo Rayleigh line} shows a classical process of a strong ZND
+detonation. Briefly, the reactant gas is compressed by the leading shock, and
+the reactant state changes from $(V_u, P_u)$ (solid circle point) to the Neumann
+point (solid square point) along the Hugoniot curve (dashed one) in Fig.
+\ref{Hugo Rayleigh line}. Then the reaction process starts, and the reactant
+state changes from the Neumann point (solid square point) to the point $(V_b,
+P_b)$ (solid triangle point) along the upper dashed Rayleigh line. It is noted
+that the minimum velocity for a detonation wave is the speed of Chapman-Jouguet
+(CJ) detonation. Similarly, the CJ detonation corresponds to two process showed
+in Fig. \ref{Hugo Rayleigh line}, i.e., the leading shock changes the reactant
+state from the point $(V_u, P_u)$ (solid circle point) to the Neumann point
+(star point) along the Hugoniot curve (dashed one), then the chemical reaction
+changes the reactant state from the Neumann point (star point) to the final
+state $(V^{CJ}_b, P^{CJ}_b)$ (solid diamond point).
+
+Hence, with given $\rho_u$, $u_u$, $P_u$, as well
+as the parameter $\gamma$, $Q$, and $f$, the detonation velocity $s$ as well as
+the mass flux $m$ are obtained as follows. First of all, the mass flux of CJ
+detonation, $m_{CJ}$, is defined by
+
+\begin{equation}
+  m_{CJ}^2 = \gamma\frac{P_u}{V_u} + (\gamma^2 - 1)\frac{Q}{V_u^2}\left (1 +
+    \sqrt{1 + \frac{2\gamma P_uV_u}{(\gamma^2 - 1)Q}}\right ).
+\end{equation}
+Then the velocity of CJ detonation wave is given by
+\begin{equation}
+  s_{CJ} = \frac{\rho_u u_u+ m_{CJ}}{\rho_u}.
+\end{equation}
+To define a strong detonation, an over-driven factor $f$ is introduced to build
+the relation between the strong detonation speed $s$ and the CJ detonation speed
+$s_{CJ}$ as $s^2=fs_{CJ}^2$. From (\ref{1D RE PDE:a}), (\ref{1D RE PDE:d}), and (\ref{1D RE ODE:a}), the
+following ODE
+equation can be derived for the distribution of the mass fraction $Y$ in the
+domain,
+\begin{equation}\label{ODE4Y}
+  \left \{ \begin{array}{l}
+    \displaystyle\frac{d}{d\xi}Y = - \frac{\omega}{m},\quad \forall \xi<0\\
+    \\
+    Y(0) = 1.
+  \end{array}\right .
+\end{equation}
+By product rule of the calculus, (\ref{1D RE ODE:d}) gives 
+\begin{equation}
+  -sY\frac{d\rho}{d\xi} - s\rho\frac{dY}{d\xi} + Y\frac{d\rho u}{d \xi} + \rho
+  u\frac{dY}{d\xi} = w.
+\end{equation}
+Then replacing the first term on the left side of the above equation by (\ref{1D RE ODE:a}), it follows that
+\begin{equation}
+  -Y\frac{d\rho u}{d\xi} - s\rho\frac{dY}{d\xi} + Y\frac{d\rho u}{d \xi} + \rho
+  u\frac{dY}{d\xi} = w.
+\end{equation}
+After the simplification, we have the following ODE for $Y$
+\begin{equation}
+    \frac{dY}{d\xi} = \frac{w}{\rho(u - s)} = -\frac{w}{m}.
+\end{equation}
+with the initial condition $Y(0) = 1$.
+
+Finally, with the mass fraction $Y$, all other quantities are given by
+\begin{equation}\label{derived Quantities}
+  \begin{array}{l}
+    P(Y) = \displaystyle\frac{m^2v_u + P_u}{\gamma + 1} + \frac{1}{\gamma + 1}\beta(Y),\\
+    \\
+    V(Y) = \displaystyle\frac{\gamma(m^2V_u + P_u)}{m^2(\gamma + 1)} - \frac{1}{m^2(\gamma + 1)}\beta(Y),\\
+    \\
+    u(Y) = s - mV(Y),
+  \end{array}
+\end{equation}
+where $\beta(Y)$ is given by
+\begin{equation}
+  \beta(Y) = \sqrt{(m^2V_u - \gamma P_u)^2 - 2(\gamma^2 - 1)m^2Q(1 - Y)}.
+\end{equation}
+It is noted that the final state of the solutions can be read from the above
+functions with $Y=0$.
+
+\end{document}
+\endinput

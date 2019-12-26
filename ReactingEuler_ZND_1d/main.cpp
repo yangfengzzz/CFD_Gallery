@@ -126,13 +126,9 @@ int main(int argc, char *argv[])
         updateState(Y[i + 1], P[i + 1], u[i + 1], V[i + 1], rho[i + 1]);
         the_x[i + 1] = the_x[i] + dx;
     }
-    //for(int i = 0;i < len;++ i){
-    //  std::cout << std::setprecision(15) << the_x[i] << " " << Y[i] << " " << P[i]  << " " << P[i]/rho[i] << " " << omega(rho[i], P[i], Y[i]) << std::endl;
-    //}
 
     /// for calculating A to unify L1/2
     double tmpA = 0.;
-    //#pragma omp parallel for reduction(+:tmpA)
     for (int i = 0; i < len - 1; ++i)
     {
         if (Y[i] > 0.5)
@@ -140,7 +136,6 @@ int main(int argc, char *argv[])
     }
 
     A = tmpA;
-    //std::cout << std::setprecision(15) << "A = " << A << std::endl;
 
     /// output the results, need to recalculate all solutions, with the updated A, preexponential factor.
     std::fstream file, file1;
